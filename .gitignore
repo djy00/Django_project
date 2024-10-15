@@ -1,1 +1,4 @@
 newenv/
+myvenv/
+db.sqlite3
+.gitignore
