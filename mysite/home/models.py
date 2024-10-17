@@ -9,6 +9,7 @@ class Question(models.Model):
     pub_date = models.DateTimeField('date published')
     owner = models.CharField(
         max_length=200,
+        # default='all' #오류를 방지하기 위해 디폴트값을 설정할 수 있음
         blank=True,
         validators=[
             MinLengthValidator(3),
