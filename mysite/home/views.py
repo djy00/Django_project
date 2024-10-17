@@ -3,6 +3,7 @@ from django.http import (HttpResponse,HttpResponseRedirect)
 from django.urls import reverse
 from .models import Question, Choice
 from django.db.models import F
+from home.forms import SurveyForm
 
 
 def index(request):
@@ -55,3 +56,19 @@ def vote(request, question_id):
         selected_choice.save()
         return HttpResponseRedirect(reverse("home:results", args=(question.id,)))
     
+def survey(request):
+    if request.method == 'POST':
+        form = SurveyForm(request.POST)
+        if form.is_valid():
+            # 문제가 없으면 forms.py의 함수에 val할 수 있음
+            print(form.cleaned_data['user_name'])
+            print(form.cleaned_data['user_age'])
+            return HttpResponseRedirect(reverse('home:thanks'))
+    else:
+        form=SurveyForm()
+    return render(request, 'home/survey.html', {'form': form})
+    
+    # return render(request, 'home/survey_custom.html', {'form': form})
+
+def thanks(request):
+    return render(request, 'home/thanks.html', {})

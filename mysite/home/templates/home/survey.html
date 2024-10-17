@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!-- <form action="{% url 'home:survey' %}" method="post"> -->
+    {% csrf_token %}
+    <!-- {{ form.as_div }} -->
+
+    {{form.user_name.label_tag}} {{form.user_name}}
+    <!-- {{ form }}
+    <input type="submit" value="Submit"> -->
+</form>
+{% endblock content %}
