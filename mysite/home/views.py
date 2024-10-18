@@ -61,14 +61,14 @@ def survey(request):
         form = SurveyForm(request.POST)
         if form.is_valid():
             # 문제가 없으면 forms.py의 함수에 val할 수 있음
-            print(form.cleaned_data['user_name'])
-            print(form.cleaned_data['user_age'])
+            # print(form.cleaned_data['user_name'])
+            # print(form.cleaned_data['user_age'])
+            form.save()
             return HttpResponseRedirect(reverse('home:thanks'))
     else:
         form=SurveyForm()
-    return render(request, 'home/survey.html', {'form': form})
-    
-    # return render(request, 'home/survey_custom.html', {'form': form})
+    # return render(request, 'home/survey.html', {'form': form})
+    return render(request, 'home/survey_custom.html', {'form': form})
 
 def thanks(request):
     return render(request, 'home/thanks.html', {})
