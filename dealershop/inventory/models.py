@@ -10,3 +10,5 @@ class Car(models.Model):
 class Inventory(models.Model):
     car = models.ForeignKey(Car,on_delete=models.CASCADE)
     number = models.IntegerField(default=1900)
+
+    
