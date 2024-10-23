@@ -16,7 +16,6 @@ from django.urls import reverse_lazy, reverse
 # FBV와 CBV의 Execution 타이밍이 다름
 # CBV는 class가 호출되면 Execution이 되기 때문에 그냥 reverse를 사용하면 에러가 발생
 
-
 class CarFormView(FormView):
     template_name = 'inventory/car_basic_form.html'
     form_class = CarForm
@@ -86,19 +85,19 @@ class CarDetailView(DetailView):
     model = Car
 
 
-# from django.views.generic.edit import UpdateView
-# class CarUpdateView(UpdateView):
-#     model = Car
-#     # optional
-#     fields = ['brand', 'model', 'color', 'year']
-#     success_url = reverse_lazy("inventory:car-list")
+from django.views.generic.edit import UpdateView
+class CarUpdateView(UpdateView):
+    model = Car
+    # optional
+    fields = ['brand', 'model', 'color', 'year']
+    success_url = reverse_lazy("inventory:car-list")
 
-#     # optional
-#     template_name_suffix = "_update_form"
+    # optional
+    template_name_suffix = "_update_form"
 
 
-# from django.views.generic.edit import DeleteView
+from django.views.generic.edit import DeleteView
 
-# class CarDeleteView(DeleteView):
-#     model = Car
-#     success_url = reverse_lazy('inventory:car-list')
+class CarDeleteView(DeleteView):
+    model = Car
+    success_url = reverse_lazy('inventory:car-list')
