@@ -101,3 +101,5 @@ from django.views.generic.edit import DeleteView
 class CarDeleteView(DeleteView):
     model = Car
     success_url = reverse_lazy('inventory:car-list')
+
+class RedirectView():
