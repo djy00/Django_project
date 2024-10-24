@@ -102,4 +102,3 @@ class CarDeleteView(DeleteView):
     model = Car
     success_url = reverse_lazy('inventory:car-list')
 
-class RedirectView():
