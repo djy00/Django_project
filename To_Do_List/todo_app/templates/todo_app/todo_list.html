@@ -2,7 +2,14 @@
 <ul>
 {{ now }}
 {% for car in object_list %}
-<li><a>{{car.todo_list}}:{{car.date}} {{car.complit}}</a></li>
+<li><a href = "{% url "todo_app:todo-detail" car.id%}">{{car.todo_list}}<a>
+    {{car.date}}
+    {% if car.complit %}
+    끗
+    {%else%}
+    해야함
+    {%endif%}
+    </li>
 {% empty %}
     <li>No list yet.</li>
 {% endfor %}

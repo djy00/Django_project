@@ -1,0 +1,5 @@
+<h1>{{ object.todo_list }}</h1>
+<p>{{ object.date }}</p>
+<p>{{ object.complit }}</p>
+<a href="{% url 'todo_app:todo-update' object.id %}">Update</a><br /> 
+<a href="{% url 'todo_app:todo-delete' object.id %}">Delete</a>
