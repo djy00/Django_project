@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'todo_app/style.css' %}" />
+
+</head>
+<body>
+    <div class="todo-container">
+        <h1>To-Do List</h1>
+        <input type="text" id="todo-input" placeholder="Enter a new task">
+        <button onclick="addTodo()">Add Task</button>
+        <ul id="todo-list"></ul>
+    </div>
+
+    <script>
+        function addTodo() {
+            const todoInput = document.getElementById("todo-input");
+            const todoList = document.getElementById("todo-list");
+
+            if (todoInput.value.trim() !== "") {
+                const newTodo = document.createElement("li");
+                newTodo.innerHTML = `
+                    <span>${todoInput.value}</span>
+                    <button class="remove-btn" onclick="removeTodo(this)">Remove</button>
+                `;
+                todoList.appendChild(newTodo);
+                todoInput.value = "";
+            }
+        }
+
+        function removeTodo(button) {
+            const todoItem = button.parentElement;
+            todoItem.remove();
+        }
+    </script>
+</body>
+</html>
+
+
