@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views.generic.base import TemplateView
-from django.views.generic.edit import CreateView, UpdateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.utils import timezone
@@ -36,6 +36,18 @@ class TodoCreateView(CreateView):
         form.instance.date = timezone.now().date() 
         return super().form_valid(form)
 
-# class TodoComplitView():
+class TodoDetailView(DetailView):
+    model = Todo
+
+class TodoUpdateView(UpdateView):
+    model = Todo
+    fields = ['todo_list','complit']
+    success_url = reverse_lazy('todo_app:todolist')
+    template_name_suffix = "_update_form"
+
+class TodoDeleteView(DeleteView):
+    model = Todo
+    success_url = reverse_lazy('todo_app:todolist')
+
  
 
